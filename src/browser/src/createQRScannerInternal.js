@@ -282,7 +282,7 @@ module.exports = function(){
       }).then(function(mediaStream){
         activeMediaStream = mediaStream;
         var video = getVideoPreview();
-        video.src = URL.createObjectURL(mediaStream);
+        video.srcObject = mediaStream;
         success(calcStatus());
       }, function(err){
         // something bad happened
@@ -324,6 +324,7 @@ module.exports = function(){
       // prepare DOM (sync)
       var videoPreview = document.createElement('video');
       videoPreview.setAttribute('autoplay', 'autoplay');
+      videoPreview.setAttribute('playsinline', 'playsinline');
       videoPreview.setAttribute('id', ELEMENTS.preview);
       videoPreview.setAttribute('style', 'display:block;position:fixed;top:50%;left:50%;' +
       'width:auto;height:auto;min-width:100%;min-height:100%;z-index:' + ZINDEXES.preview +
